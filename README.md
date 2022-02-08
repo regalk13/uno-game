@@ -1,2 +1,2 @@
-# uno-game
+# Uno Game
 Uno game with django
