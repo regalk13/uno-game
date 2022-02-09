@@ -1,0 +1,82 @@
+.out-bg1 {
+    position: relative;
+    background: url(/images/index.png);
+    height: 3490px;
+    overflow: hidden;
+}
+
+.navbar {
+    display: flex;
+    background: transparent;
+    text-align: center;
+    line-height: 5px;
+    font-size: 17px;
+    position: relative;
+    border: transparent;
+    height: 75px;
+}
+
+.navbar-brand{
+    display: flex;
+    position: relative;
+    text-align: center;
+    line-height: 10px;
+}
+
+.body-img{
+    position: absolute;
+    top: 52px;
+    left: -35px;
+    width: 100%;
+    height: auto;
+    min-width: 1200px;
+    max-width: 1920px;
+}
+
+.welcome-title{
+    text-align: center;
+    margin-left: 617px;
+    margin-top: 570px;
+    background: #0b6e81;
+    width: 660px;
+    border-radius: 20px;
+    z-index: 99;
+    border: 3px solid #0d4e4a;
+    color: #ffffff;
+}
+
+.welcome-title h1{
+    font-size: 50px;
+}
+
+.welcome-title p{
+    font-size: 20px;
+}
+
+.play-btn{
+    position: absolute;
+   text-align: center;
+   line-height: 20px;
+   margin-left: 772px;
+   color: #fff;
+   font-size: 30px;
+   justify-content: center;
+   align-items: center;
+   text-decoration: none;
+   background: #f74f31;
+   display: flex;
+   width: 350px;
+   height: 70px;
+   border-radius: 30px;
+    box-shadow: 0px 5px 0px #0d4e4a;
+}
+
+.play-btn:hover{
+    background: linear-gradient(#eb8371, #f74f31);
+}
+
+.play-btn a{
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}

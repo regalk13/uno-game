@@ -3,30 +3,28 @@
 <html lang="en">
 
 <head>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <title>Uno Game</title>
+  {% include 'styles.html'%}
+  <title>UNO Game</title>
 </head>
 
 <body>
+  <div class="out-bg1">
+    {% include 'navbar.html' %}
 
-  {% include 'navbar.html' %}
-
-  {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 
 
 
-  {% block content%}
+    {% block content%}
 
-  {% endblock %}
-
+    {% endblock %}
+  </div>
 
 </body>
 

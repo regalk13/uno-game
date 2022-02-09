@@ -1,14 +1,20 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>UNO Game</h1>
+<div class="body-img">
+  <img src="/static/images/canvas.png">
+</div>
 
-{% if user.is_authenticated%}
+<div>
+  <div class="welcome-title">
+    <h1>Welcome to UNO!!!</h1>
+    <p>The best way to play UNO online...</p>
+  </div>
 
-<div>{{user.username}}</div>
-
-{% endif %}
-
-<button action="">Game</button>
-
+  <br>
+  <br>
+  <div class="play-btn">
+    <a href="{% url 'home' %}">Play Now!</a>
+  </div>
+</div>
 {% endblock %}
