@@ -3,4 +3,12 @@
 {% block content %}
 <h1>UNO Game</h1>
 
+{% if user.is_authenticated%}
+
+<div>{{user.username}}</div>
+
+{% endif %}
+
+<button action="">Game</button>
+
 {% endblock %}
