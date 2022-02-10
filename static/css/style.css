@@ -1,16 +1,14 @@
 * {
     scroll-behavior: smooth;
     font-family: 'Sora', sans-serif;
+    padding: 0px;
+    margin: 0px;
 }
 
-body {
-    position: relative;
-    scroll-behavior: smooth;
-    background-image: url(/images/index.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 3490px;
+body{
+    top: 100px;
+    background: url(/static/images/index.png) no-repeat center top;
+    height: 100vh;
 }
 
 .navbar {
@@ -33,13 +31,16 @@ body {
 }
 
 .body-img{
+    top: 50px;
     position: absolute;
-    top: 52px;
-    left: -40px;
+    left: 50%;
     width: 100%;
     height: auto;
-    min-width: 1000px;
-    
+    transform-origin: center center;
+    min-width: 1200px;
+    max-width: 1920px;
+
+    transform: translateX(-52%);
     animation-name: scale-image;
     animation-duration: .5s;
     animation-delay: .1s;
@@ -48,12 +49,13 @@ body {
 @keyframes scale-image{
     
     0%{
-        transform: scale(0, 0);
+        opacity: 0;
     }
-
+    50%{
+        opacity: 0.5;
+    }
     100%{
         opacity: 1;
-        transform: scale(1, 1);
     }
 
 }
@@ -67,7 +69,6 @@ body {
     background: #0b6e81;
     width: 660px;
     border-radius: 20px;
-    z-index: 99;
     border: 3px solid #0d4e4a;
     color: #ffffff;
 }
@@ -106,27 +107,10 @@ body {
 
 
 .play-btn a{
-    position: absolute;
+    position: relative;
     text-align: center;
     text-decoration: none;
     color: #fff;
-}
-
-.flex-container{
-    display: flex;
-    padding: 20px;
-    height: 700px;
-}
-.about-info{
-    align-self: flex-end;
-    flex: 2;
-    background-color: #fff;
-    opacity: .5;
-    border-radius: 10px;
-    width: 800px;
-    min-width: 600px;
-    margin-left: 47px;
-    padding: 5px;
 }
 
 @media only screen and (max-width: 1000px){
