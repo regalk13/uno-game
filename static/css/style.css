@@ -31,13 +31,13 @@ body {
     left: -35px;
     width: 100%;
     height: auto;
-    min-width: 1200px;
-    max-width: 1920px;
+    min-width: 1000px;
 }
 
 .welcome-title{
     text-align: center;
-    margin-left: 617px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 570px;
     background: #0b6e81;
     width: 660px;
@@ -56,10 +56,11 @@ body {
 }
 
 .play-btn{
-    position: absolute;
-   text-align: center;
+    position: relative;
+    text-align: center;
    line-height: 20px;
-   margin-left: 772px;
+   margin-left: auto;
+   margin-right: auto;
    color: #fff;
    font-size: 30px;
    justify-content: center;
