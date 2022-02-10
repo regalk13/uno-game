@@ -1,11 +1,12 @@
-<nav class="navbar navbar-dark navbar-expand-lg text-uppercase" id="mainNav">
+<nav class="navbar navbar-expand navbar-dark navbar-expand-lg bounce animated text-uppercase" id="mainNav">
   <div class="container">
     {% if user.is_authenticated %}
     <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">Hi, {{ user.username }}!</a>
     {% else %}
     <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">Uno</a>
     {% endif %}
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+    <div class="navbar" id="navbarResponsive">
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
             href="#about">About UNO<sup>®</sup></a></li>
