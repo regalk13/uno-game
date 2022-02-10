@@ -8,7 +8,7 @@ body {
     scroll-behavior: smooth;
     background-image: url(/images/index.png);
     background-position: center center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     height: 3490px;
 }
@@ -112,11 +112,28 @@ body {
     color: #fff;
 }
 
+.flex-container{
+    display: flex;
+    padding: 20px;
+    height: 700px;
+}
+.about-info{
+    align-self: flex-end;
+    flex: 2;
+    background-color: #fff;
+    opacity: .5;
+    border-radius: 10px;
+    width: 800px;
+    min-width: 600px;
+    margin-left: 47px;
+    padding: 5px;
+}
+
 @media only screen and (max-width: 1000px){
-    
     .nav-item{
         padding: 20px;
         position: relative;
     }
-
+    
 }
+
