@@ -39,25 +39,8 @@ body{
     transform-origin: center center;
     min-width: 1200px;
     max-width: 1920px;
-
-    transform: translateX(-52%);
-    animation-name: scale-image;
-    animation-duration: .5s;
-    animation-delay: .1s;
-}
-
-@keyframes scale-image{
     
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 0.5;
-    }
-    100%{
-        opacity: 1;
-    }
-
+    transform: translateX(-52%);
 }
 
 
@@ -68,7 +51,7 @@ body{
     margin-top: 570px;
     background: #0b6e81;
     width: 660px;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 3px solid #0d4e4a;
     color: #ffffff;
 }
@@ -96,7 +79,7 @@ body{
    display: flex;
    width: 350px;
    height: 70px;
-   border-radius: 30px;
+   border-radius: 15px;
     box-shadow: 0px 4px 0px #0d4e4a;
     transition: .3s ease;
 }

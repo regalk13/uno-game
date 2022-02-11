@@ -51,3 +51,15 @@ def registerPage(request):
             messages.error(request, 'An error occurred during registration')
 
     return render(request, 'home/register.html', {'form': form})
+
+def logoutPage(request):
+    logout(request)
+    return redirect('home')
+
+def profilePage(request):
+    return render(request, "home/profile.html", {})
+
+def aboutPage(request):
+    return render(request, "home/about.html", {})
+
+

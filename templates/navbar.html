@@ -9,12 +9,13 @@
     <div class="navbar" id="navbarResponsive">
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-            href="{% url 'home'%}#about">About UNO<sup>®</sup></a></li>
+            href="{% url 'about'%}">About UNO<sup>®</sup></a></li>
 
         {% if user.is_authenticated %}
         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-            href="">Profile</a></li>
-        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">Log
+            href="{% url 'profile' %}">Profile</a></li>
+        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+            href="{% url 'logout' %}">Log
             Out</a></li>
         {% else %}
         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
