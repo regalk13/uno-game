@@ -96,6 +96,72 @@ body{
     color: #fff;
 }
 
+.about-intro{
+    background-color: #000;
+    opacity: .699;
+    color: #fff;
+    padding: 35px;
+    margin: auto;
+    margin-top: 40px;
+    width: 1200px;
+    animation-name: abouts;
+    animation-duration: .5s;
+
+}
+
+.about-intro h1{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.setup{
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+    margin-top: 40px;
+    
+
+}
+
+.setup-cards{
+    color: #fff;
+    background-color: #000;
+    opacity: .699;
+    padding: 35px;
+    text-align: justify;
+    animation-name: abouts;
+    animation-duration: .5s;
+
+}
+
+.setup h2{
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.cards{
+    margin-top: 20px;
+    color: #fff;
+    background-color: #000;
+    opacity: .699;
+    padding: 35px;
+    padding-bottom: 0px;
+    animation-name: abouts;
+    animation-duration: .5s;
+    text-align: center;
+}
+
+@keyframes abouts {
+    0%{
+        transform: scale(0);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+
+}
+
 @media only screen and (max-width: 1000px){
     .nav-item{
         padding: 20px;
