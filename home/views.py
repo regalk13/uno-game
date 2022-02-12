@@ -56,8 +56,10 @@ def logoutPage(request):
     logout(request)
     return redirect('home')
 
-def profilePage(request):
-    return render(request, "home/profile.html", {})
+def profilePage(request, pk):
+    user = User.objects.get(id=pk)
+
+    return render(request, "home/profile.html", {"user": user})
 
 def aboutPage(request):
     return render(request, "home/about.html", {})
