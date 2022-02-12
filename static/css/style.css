@@ -155,7 +155,7 @@ body{
     padding: 20px;
     margin-top: -15px;
     background-color: #000;
-    opacity: .8;
+    opacity: .9;
     color: #fff;
 }
 
@@ -170,6 +170,17 @@ body{
     margin-bottom: 15px;
 }
 
+.form-register input {
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+}
+
+.card {
+    padding: 20px;
+    margin-top: -25px;
+
+}
 @keyframes abouts {
     0%{
         transform: scale(0);
