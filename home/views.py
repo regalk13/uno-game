@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import User
-from .forms import MyUserCreationForm
+from .forms import MyUserCreationForm, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 def home(request):
     return render(request, 'home/home.html', {})
@@ -64,4 +66,17 @@ def profilePage(request, pk):
 def aboutPage(request):
     return render(request, "home/about.html", {})
 
+@login_required(login_url='login')
+def updateUser(request):
+    user = request.user
+    form = UserForm(instance=user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile', pk=user.id)
+
+    
+    return render(request, "home/update-user.html", {'form': form})
 

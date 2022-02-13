@@ -21,9 +21,11 @@
                     {% endif %}
                     <div class="mb-4 pb-2">
                       {% if request.user == user %}
-                      <button type="button" class="btn btn-primary btn-rounded btn-lg">
-                        Update user
-                      </button>
+                      <a href="{% url 'update-user' %}">
+                        <button type="button" class="btn btn-primary btn-rounded btn-lg">
+                          Update user
+                        </button>
+                      </a>
                       {% endif %}
                       <div class="d-flex justify-content-between text-center mt-5 mb-2">
                         <div>
