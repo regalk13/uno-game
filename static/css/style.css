@@ -182,9 +182,11 @@ body{
 }
 
 .title-game {
-    font-size: 50px;
+    font-size: 70px;
     text-align: center;
     margin-top: 10px;
+    color: #000;
+    text-shadow: -1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;
 }
 
 .card-container{
