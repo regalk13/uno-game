@@ -1,12 +1,11 @@
-$(window).load(function () {
-  $(".card-online").click(function () {
-    $('.hover_bkgr_fricc').show();
-    console.log("click");
+$(document).ready(function () {
+  $('#open').click(function () {
+    $('.model-container').css('transform', 'scale(1)');
   });
-  $('.hover_bkgr_fricc').click(function () {
-    $('.hover_bkgr_fricc').hide();
+
+  $('#close').click(function () {
+    $('.model-container').css('transform', 'scale(0)');
   });
-  $('.popupCloseButton').click(function () {
-    $('.hover_bkgr_fricc').hide();
-  });
+
+
 });
