@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from .models import Room
 
 ERROR = "error"
 SUCCESS = "success"
@@ -15,5 +15,12 @@ def game_now(request):
     if not player.is_authenticated:
         message = f"You need to login first!"
         return redirect('login')
-        
-    return render(request, 'game/game-now.html', {}) 
+   
+    public_rooms =  Room.objects.filter(type=0)
+    
+    context = {
+        "public_rooms": public_rooms
+    }
+    return render(request, 'game/game-now.html', context) 
+
+

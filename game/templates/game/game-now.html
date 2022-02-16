@@ -42,6 +42,24 @@
     <button id="close-online">
       <i class="fa fa-arrow-left fa-fw"></i>
     </button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id-Admin</th>
+          <th scope="col">Name</th>
+          <th scope="col">Participants</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for room in public_rooms %}
+        <tr>
+          <td>{{room}}</td>
+          <td>{{room.name}}</td>
+          <td>1/10</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
 
