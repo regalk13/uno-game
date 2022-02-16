@@ -41,7 +41,7 @@ class User(AbstractUser):
         MASTER: 5000,
         GRAND_MASTER: 6400,
     }
-
+    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
         
