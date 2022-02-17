@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Room
+from .helper import GameServer
 
 ERROR = "error"
 SUCCESS = "success"
@@ -23,4 +24,25 @@ def game_now(request):
     }
     return render(request, 'game/game-now.html', context) 
 
+def enter_public_play(request):
+
+    player = request.user
+    
+    if player.is_authenticated:
+        if GameServer.AVAILABLE_PUBLIC_GAMES:
+            for public_game in GameServer.AVAILABLE_PUBLIC_GAMES:
+                if public_game.get_count_of_players() < MAX_JOINED_PLAYER_COUNT:
+                    if not public_game.is_game_running:
+                        active_unique_id = public_game.unique_id
+                        return HttpResponseRedirect(
+                            reverse('enter_game',
+                                    kwargs={'game_type': GameServer.PUBLIC, 'unique_id': active_unique_id}
+                                    ))
+
+        active_unique_id = id_generator(10)
+        return HttpResponseRedirect(
+            reverse('enter_game', kwargs={'game_type': GameServer.PUBLIC, 'unique_id': active_unique_id}))
+    
+    else:
+        return redirect('login')
 
