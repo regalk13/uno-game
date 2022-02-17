@@ -61,7 +61,7 @@ class Room(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.unique_game_id}-{self.admin.username}"
+        return f"{self.unique_game_id}"
 
 
 class Player(models.Model):
