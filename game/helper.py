@@ -179,7 +179,7 @@ class GameServer:
                         return public_game
                     return None
             print("Creating New Public Game.")
-            new_public_game = GameServer(unique_id, player=player, game_type=game_type, league=league)
+            new_public_game = GameServer(unique_id, player=player, game_type=game_type)
             cls.AVAILABLE_PUBLIC_GAMES.append(new_public_game)
             return new_public_game
         
@@ -259,6 +259,9 @@ class GameServer:
 
             self.is_game_running = False
             delete_object(self)
+    
+    def join_player(self, player):
+        self.players.append(player)
 
     def get_count_of_players(self):
         return int(len(self.players))
