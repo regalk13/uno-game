@@ -16,6 +16,14 @@ def game_now(request):
     if not player.is_authenticated:
         message = f"You need to login first!"
         return redirect('login')
+    
+    if request.method == 'POST':
+        print(request.POST.get('name').lower())
+        print(request.POST.get('players'))
+        if request.POST.getlist('public'):
+            print("true")
+        else:
+            print("false")
 
     context = {
         "public_rooms": GameServer.AVAILABLE_PUBLIC_GAMES
