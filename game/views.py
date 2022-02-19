@@ -30,7 +30,7 @@ def enter_public_play(request, unique_id):
                 if unique_id == public_game.unique_id:
                     for player_public in public_game.players:
                         if player_public.username == player.username:
-                            return redirect('home')
+                            return redirect('game-now')
                     print(public_game.get_count_of_players())
                     if public_game.get_count_of_players() < MAX_JOINED_PLAYER_COUNT:
                         if not public_game.is_game_running:

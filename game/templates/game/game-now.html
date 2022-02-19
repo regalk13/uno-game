@@ -39,7 +39,7 @@
   <div class="model">
     <h3>Game Online</h3>
     <p>Explore in the public games</p>
-    <button id="close-online">
+    <button class="close-button" id="close-online">
       <i class="fa fa-arrow-left fa-fw"></i>
     </button>
     <table class="table table-striped">
@@ -71,21 +71,44 @@
 
 <div id="model-join-room" class="model-container">
   <div class="model">
-    <h3>Join Room</h3>
-    <p>Join in a room whit code private/public</p>
-    <button id="close-join-room">
+    <h3>Create Room</h3>
+    <p>Create a room to play whit friends or random people.</p>
+    <button class="close-button" id="close-join-room">
       <i class="fa fa-arrow-left fa-fw"></i>
     </button>
+    <br>
+    <form method="POST" action="">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Name Room</span>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default">
+      </div>
+      <br>
+      <label for="customRange1" class="form-label">Max Players</label>
+      <input value=1 type="range" class="form-range" min=2 max=10 id="customRange1"
+        oninput="this.nextElementSibling.value = this.value">
+      <output>2</output>
+      <br>
+      <br>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Public Game
+        </label>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg">Create Room</button>
+    </form>
   </div>
 </div>
 
 <div id="model-create-room" class="model-container">
   <div class="model">
-    <h3>Create Room</h3>
-    <p>Create a room to play whit random people or invite friends</p>
-    <button id="close-create-room">
+    <h3>Join Room</h3>
+    <p>Join a room private/public</p>
+    <button class="close-button" id="close-create-room">
       <i class="fa fa-arrow-left fa-fw"></i>
     </button>
+
   </div>
 </div>
 

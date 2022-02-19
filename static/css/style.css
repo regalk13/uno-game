@@ -289,7 +289,7 @@ body{
     position: relative;
 }
 
-.model button{
+.close-button {
     width: 35px;
     height: 35px;
     background: #333;
@@ -303,7 +303,7 @@ body{
     top: 15px; left: 15px;
 }
 
-.model button:hover{
+.close-button:hover{
     opacity: .8;
 }
 
