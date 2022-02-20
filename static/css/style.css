@@ -279,7 +279,7 @@ body{
 }
 
 .model-container .model{
-    height: 500px;
+    max-height: 500px;
     width: 840px;
     margin: 10px;
     padding: 20px;

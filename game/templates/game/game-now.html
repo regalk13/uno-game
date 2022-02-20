@@ -84,7 +84,10 @@
         <input name="name" type="text" class="form-control" aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default">
       </div>
+
+
       <br>
+
       <label for="customRange1" class="form-label">Max Players</label>
       <input name="players" value=1 type="range" class="form-range" min=2 max=10 id="customRange1"
         oninput="this.nextElementSibling.value = this.value">
@@ -95,6 +98,7 @@
         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="public">
         <label class="form-check-label" for="flexCheckDefault">Public Game</label>
       </div>
+
       <button type="submit" class="btn btn-primary">Create Room</button>
     </form>
   </div>
@@ -107,7 +111,16 @@
     <button class="close-button" id="close-create-room">
       <i class="fa fa-arrow-left fa-fw"></i>
     </button>
+    <form method="GET" action="">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Room ID</span>
+        <input name="unique_id" type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default">
+      </div>
 
+      <button type="submit" class="btn btn-primary">Join Room</button>
+    </form>
   </div>
 </div>
 
