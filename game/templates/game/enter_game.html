@@ -1,1 +1,25 @@
 <h1>The room</h1>
+
+<p id="app"></p>
+
+<script>
+
+
+  let loc = window.location;
+  let wstart = 'ws://'
+
+  if (loc.protocol === 'https:') {
+    wstart = "wss://"
+  }
+
+  let endpoint = wstart + loc.host + loc.pathname
+
+  let socket = new WebSocket(endpoint);
+
+  socket.onmessage = function (event) {
+    var data = JSON.parse(event.data);
+    console.log(data);
+    document.querySelector('#app').innerText = data.message;
+  }
+
+</script>

@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
 
     'home.apps.HomeConfig',
     'game.apps.GameConfig',
+    
 ]
 
 AUTH_USER_MODEL = 'home.User'
@@ -76,7 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'uno_game.wsgi.application'
-
+ASGI_APPLICATION = 'uno_game.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
