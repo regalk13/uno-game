@@ -8,6 +8,11 @@ from django.conf import settings
 def delete(objetc_):
     del object_
 
+class CustomEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
+
+
 class Card:
     RED, BLUE, GREEN, YELLOW = "R", "B", "G", "Y"
     WILD, WILD_FOUR = "W", "WF"
@@ -99,7 +104,7 @@ class Deck:
 
 
 class PlayerServer:
-    def __init__(self, username, rating_before_start):
+    def __init__(self, username, rating_before_start=0):
         self.username = username
         self.rating_before_start = rating_before_start
         self.hand = []
