@@ -21,7 +21,7 @@ class GameRoomConsumer(AsyncConsumer):
 
         self.player_server_obj = PlayerServer(username=self.me.username) 
         
-        self.game = GameServer.create_new_game(unique_id=self.unique_id, player=User, game_type=self.game_type)
+        self.game = GameServer.create_new_game(unique_id=self.unique_id, player=self.player_server_obj, game_type=self.game_type)
 
         if self.game is None:
             # Connection is rejected because this room is already full.

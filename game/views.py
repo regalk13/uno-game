@@ -61,6 +61,7 @@ def game_now(request):
                                 reverse('enter_game', kwargs={'game_type': GameServer.PRIVATE, 'unique_id': unique_id}))
             
             for public_game in GameServer.AVAILABLE_PUBLIC_GAMES:
+                print(public_game.admin_username)
                 if unique_id == public_game.unique_id:
                     if public_game.get_count_of_players() < MAX_JOINED_PLAYER_COUNT:
                         if not public_game.is_game_running:
