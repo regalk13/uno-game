@@ -3,22 +3,49 @@
 <p id="app"></p>
 
 <script>
-
-
   let loc = window.location;
   let wstart = 'ws://'
-
   if (loc.protocol === 'https:') {
     wstart = "wss://"
   }
-
   let endpoint = wstart + loc.host + loc.pathname
-
   let socket = new WebSocket(endpoint);
+  let me = "{{user.username}}"
+  let gameRoomAdmin = "{{game_room.admin.username}}"
 
-  socket.onmessage = function (event) {
-    var data = JSON.parse(event.data);
-    console.log(data);
-    document.querySelector('#app').innerText = data.message;
+
+  const open_socket = new Promise(resolve => {
+    socket.addEventListener("open", (e) => {
+      resolve({"open_socket_state": socket.readyState});
+    });
+  });
+
+
+  Promise.all([open_socket]).then(result => {
+    console.log("open");
+    let data = {
+      "status": "user_new",
+      "message": "New user entered the room.",
+      "data": {
+        "new_user_username": "{{ user.username }}",
+        "unique_peer_id": result[0].unique_peer_id,
+        "game_room_unique_id": "{{ game_room.unique_game_id }}"
+      }
+    };
+    let response = {"type": "user.new", "text": data};
+    socket.send(JSON.stringify(response));
+
+    addUser("{{user.username}}");
+
+  });
+
+
+  app = document.getElementById('app');
+  function addUser(username) {
+
+    let newUser = document.createElement('p');
+    newUser.innerHTML = username;
+    app.append(newUser);
   }
+
 </script>

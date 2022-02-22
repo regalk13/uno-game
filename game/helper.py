@@ -178,10 +178,11 @@ class GameServer:
             for public_game in cls.AVAILABLE_PUBLIC_GAMES:
                 if public_game.unique_id == unique_id:
                     if public_game.get_count_of_players() < 10:
-                        print("Returning Existing Public Game.")
-                        public_game.players.append(player)
-                        public_game.player_usernames.append(player.username)
-                        return public_game
+                        if not player.username in public_game.player_usernames:
+                            print("Returning Existing Public Game.")
+                            public_game.players.append(player)
+                            public_game.player_usernames.append(player.username)
+                            return public_game
                     return None
             print("Creating New Public Game.")
             new_public_game = GameServer(unique_id, player=player, game_type=game_type)
