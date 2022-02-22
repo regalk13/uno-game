@@ -9,6 +9,8 @@ from home.models import User
 from .models import GameHistory, Participant
 from .helper import Card, PlayerServer, GameServer, Deck, CustomEncoder
 
+
+
 class GameRoomConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         self.me = self.scope['user']

@@ -80,7 +80,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'uno_game.wsgi.application'
 ASGI_APPLICATION = 'uno_game.asgi.application'
 
-
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
