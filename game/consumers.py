@@ -26,6 +26,11 @@ class GameRoomConsumer(AsyncConsumer):
         if self.game is None:
             return
         
+        await self.channel_layer.group_add(
+            self.game_room_id,
+            self.channel_name
+        )
+
         await self.send({
             "type": "websocket.accept"
         })
@@ -221,13 +226,13 @@ class GameRoomConsumer(AsyncConsumer):
                 response['status'] = "forced_draw_card"
                 type_of_event = "forced_draw_card"
 
-            #await self.channel_layer.group_send(
-            #    self.game_room_id,
-            #    {
-            #        "type": type_of_event,
-            #        "text": json.dumps(response)
-            #    }
-            #)
+            await self.channel_layer.group_send(
+                self.game_room_id,
+                {
+                    "type": type_of_event,
+                    "text": json.dumps(response)
+                }
+            )
 
             if type_of_event == "user.new":
                 if self.game.game_type == GameServer.PRIVATE:
