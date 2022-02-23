@@ -35,17 +35,22 @@
     let response = {"type": "user.new", "text": data};
     socket.send(JSON.stringify(response));
 
-    addUser("{{user.username}}");
-
   });
 
-
   app = document.getElementById('app');
-  function addUser(username) {
 
-    let newUser = document.createElement('p');
-    newUser.innerHTML = username;
-    app.append(newUser);
+  socket.onmessage = function (event) {
+    var data = JSON.parse(event.data);
+    var array_players = JSON.parse(data['gameData'])['players'];
+    while (app.firstChild) {
+      app.firstChild.remove()
+    }
+    for (const player of array_players) {
+      div = document.createElement('p')
+      div.innerHTML = player;
+      app.append(div);
+    }
+
   }
 
 </script>

@@ -10,7 +10,6 @@ from .models import GameHistory, Participant
 from .helper import Card, PlayerServer, GameServer, Deck, CustomEncoder
 
 
-
 class GameRoomConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         self.me = self.scope['user']
@@ -241,13 +240,10 @@ class GameRoomConsumer(AsyncConsumer):
                     if self.game.get_count_of_players() == 10:
                         GameServer.PRIVATE.remove(self.game)
 
-
-    async def user_join(self, event):
-         await self.send({
+    async def user_new(self, event):
+        await self.send({
             "type": "websocket.send",
-            "text": json.dumps({'message': self.game.player_usernames})
+            "text": event['text']
         })
-
-
-    
+        
 
