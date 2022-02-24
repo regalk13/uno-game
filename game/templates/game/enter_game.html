@@ -1,4 +1,8 @@
-<h1>The room</h1>
+{% extends 'main-game.html' %}
+
+{% block content %}
+
+<h2>Room</h2>
 
 <p id="app"></p>
 
@@ -42,15 +46,30 @@
   socket.onmessage = function (event) {
     var data = JSON.parse(event.data);
     var array_players = JSON.parse(data['gameData'])['players'];
-    while (app.firstChild) {
-      app.firstChild.remove()
-    }
-    for (const player of array_players) {
-      div = document.createElement('p')
-      div.innerHTML = player;
-      app.append(div);
+    if (data['status'] == "user_new") {
+      while (app.firstChild) {
+        app.firstChild.remove()
+      }
+      for (const player of array_players) {
+        div = document.createElement('p')
+        div.innerHTML = player;
+        app.append(div);
+      }
+
+    } else if (data['status'] == "user_left_room") {
+      while (app.firstChild) {
+        app.firstChild.remove()
+      }
+      for (const player of array_players) {
+        div = document.createElement('p')
+        div.innerHTML = player;
+        app.append(div);
+      }
+
     }
 
   }
 
 </script>
+
+{% endblock %}

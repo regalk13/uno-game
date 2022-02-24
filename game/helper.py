@@ -5,7 +5,7 @@ from json import JSONEncoder
 import random
 from django.conf import settings
 
-def delete(objetc_):
+def delete_object(object_):
     del object_
 
 class CustomEncoder(JSONEncoder):
@@ -283,7 +283,7 @@ class GameServer:
 
         player.hand = []
         self.players.remove(player)
-        self.players_usernames.remove(player.username)
+        self.player_usernames.remove(player.username)
         delete_object(player)
         if len(self.players) == 0:
             delete_object(self)

@@ -246,4 +246,39 @@ class GameRoomConsumer(AsyncConsumer):
             "text": event['text']
         })
         
+    
+    async def websocket_disconnect(self, event):
+        print("disconnected", event)
+        # Leaving current Game
+        if self.game is not None:
+            me = self.me
+            self.game.leave_game(self.player_server_obj)
+            del self.player_server_obj
+            response = {
+                "status": "user_left_room",
+                "message": "Disconnecting...",
+                "data": {
+                    "left_user_username": me.username,
+                    "game_room_unique_id": self.game_room_id
+                },
+                "gameData": json.dumps(self.game.prepare_client_data(), cls=CustomEncoder)
+            }
+            await self.channel_layer.group_send(
+                self.game_room_id,
+                {
+                    "type": "user_left_room",
+                    "text": json.dumps(response)
+                }
+            )
 
+            await self.channel_layer.group_discard(
+                self.game_room_id,
+                self.channel_name
+            )
+
+
+    async def user_left_room(self, event):
+        await self.send({
+            "type": "websocket.send",
+            "text": event['text'],
+        })
