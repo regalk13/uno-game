@@ -50,11 +50,14 @@
       while (app.firstChild) {
         app.firstChild.remove()
       }
+
+
       for (const player of array_players) {
         div = document.createElement('p')
         div.innerHTML = player;
         app.append(div);
       }
+
 
     } else if (data['status'] == "user_left_room") {
       while (app.firstChild) {
@@ -69,6 +72,8 @@
     }
 
   }
+
+
 
 </script>
 

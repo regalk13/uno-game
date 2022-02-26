@@ -245,6 +245,24 @@ class GameRoomConsumer(AsyncConsumer):
             "type": "websocket.send",
             "text": event['text']
         })
+
+    async def time_out(self, event):
+        text = json.loads(event['text'])
+        data = text['data']
+        time_out_data = text['timeOutData']
+        if data['username'] != self.me.username:
+            time_out_data['drawnCards'] = []
+        response = {
+            "status": text['status'],
+            "message": text['message'],
+            "data": text['data'],
+            "gameData": text['gameData'],
+            "timeOutData": time_out_data,
+        }
+        await self.send({
+            "type": "websocket.send",
+            "text": json.dumps(response),
+        })
         
     
     async def websocket_disconnect(self, event):
