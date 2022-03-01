@@ -53,11 +53,14 @@ class GameRoomConsumer(AsyncConsumer):
                 # print(f"Before Broadcasting: Going to call start.game")
                 self.game.start_game()
 
+
                 # This can be called by Friend Game only.
                 if self.game.game_type == GameServer.PRIVATE:
                     GameServer.PRIVATE.remove(self.game)
                 if self.game.game_type == GameServer.PUBLIC:
                     GameServer.AVAILABLE_PUBLIC_GAMES.remove(self.game)
+
+
             elif type_of_event == "end.game":
                 # await self.create_game_history()
                 self.game.end_game()

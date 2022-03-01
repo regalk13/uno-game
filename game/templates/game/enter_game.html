@@ -6,6 +6,10 @@
 
 <p id="app"></p>
 
+
+<button id="button-start" class="button">Game</button>
+
+
 <script>
   let loc = window.location;
   let wstart = 'ws://'
@@ -24,7 +28,6 @@
     });
   });
 
-
   Promise.all([open_socket]).then(result => {
     console.log("open");
     let data = {
@@ -41,23 +44,26 @@
 
   });
 
+
   app = document.getElementById('app');
 
   socket.onmessage = function (event) {
     var data = JSON.parse(event.data);
+    console.log(data);
+    var admin = JSON.parse(data['gameData'])['adminUsername'];
     var array_players = JSON.parse(data['gameData'])['players'];
+    console.log(admin);
     if (data['status'] == "user_new") {
       while (app.firstChild) {
         app.firstChild.remove()
       }
 
-
+      console.log(array_players)
       for (const player of array_players) {
         div = document.createElement('p')
         div.innerHTML = player;
         app.append(div);
       }
-
 
     } else if (data['status'] == "user_left_room") {
       while (app.firstChild) {
@@ -71,8 +77,60 @@
 
     }
 
-  }
+    document.getElementById('button-start').addEventListener("click", function () {
+      if ("{{user.username}}" == admin) {
+        if (array_players.length >= 2) {
+          start_game();
+        }
+      } else {
+        alert("You need be admin to start the game");
+      }
+    });
 
+  }
+  socket.addEventListener("message", function (e) {
+    let backendResponse = JSON.parse(e.data);
+    let status = backendResponse.status;
+    let message = backendResponse.message;
+    let data = backendResponse.data;
+    let gameData;
+    if (backendResponse.gameData) {
+      gameData = JSON.parse(backendResponse.gameData);
+    }
+
+    if (status === "connected") {
+      console.log("Connected from Scene 2.");
+    }
+    if (status === "start_game") {
+      currentGame.copyData(gameData);
+      console.log("Start_Game")
+      _this.startGameEventConsumer(backendResponse.serializedPlayer);
+
+      if (me !== currentGame.getCurrentPlayer()) {
+        _this.topDeckCard.disableInteractive();
+      }
+    }
+  });
+
+
+  function start_game() {
+    Promise.all([open_socket]).then(result => {
+      console.log("open");
+      let data = {
+        "status": "start_game",
+        "message": "Admin start the game.",
+        "data": {
+          "users": "{{ user.username }}",
+          "unique_peer_id": result[0].unique_peer_id,
+          "game_room_unique_id": "{{ game_room.unique_game_id }}"
+        }
+      };
+      let response = {"type": "start.game", "text": data};
+      socket.send(JSON.stringify(response));
+
+    });
+
+  }
 
 
 </script>
