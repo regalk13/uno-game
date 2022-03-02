@@ -51,6 +51,7 @@ class GameRoomConsumer(AsyncConsumer):
 
             if type_of_event == "start.game":
                 # print(f"Before Broadcasting: Going to call start.game")
+                print("Starting game...")
                 self.game.start_game()
 
 
@@ -303,3 +304,15 @@ class GameRoomConsumer(AsyncConsumer):
             "type": "websocket.send",
             "text": event['text'],
         })
+    async def start_game(self, event):
+        text = event.get('text', None)
+        if text:
+            loaded_dict_data = json.loads(text)
+            extra_data = {
+                "serializedPlayer": json.dumps(self.player_server_obj, cls=CustomEncoder),
+            }
+            loaded_dict_data.update(extra_data)
+            await self.send({
+                "type": "websocket.send",
+                "text": json.dumps(loaded_dict_data)
+            })

@@ -97,18 +97,14 @@
     if (backendResponse.gameData) {
       gameData = JSON.parse(backendResponse.gameData);
     }
-
+      
     if (status === "connected") {
       console.log("Connected from Scene 2.");
     }
     if (status === "start_game") {
-      currentGame.copyData(gameData);
-      console.log("Start_Game")
-      _this.startGameEventConsumer(backendResponse.serializedPlayer);
+        console.log(gameData);
+        console.log("Start_Game");
 
-      if (me !== currentGame.getCurrentPlayer()) {
-        _this.topDeckCard.disableInteractive();
-      }
     }
   });
 
@@ -118,12 +114,8 @@
       console.log("open");
       let data = {
         "status": "start_game",
-        "message": "Admin start the game.",
-        "data": {
-          "users": "{{ user.username }}",
-          "unique_peer_id": result[0].unique_peer_id,
-          "game_room_unique_id": "{{ game_room.unique_game_id }}"
-        }
+        "message": "Game is being started.",
+        "data": ""
       };
       let response = {"type": "start.game", "text": data};
       socket.send(JSON.stringify(response));
