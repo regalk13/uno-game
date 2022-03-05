@@ -6,6 +6,8 @@
 
 <p id="app"></p>
 
+<p id="card-container"></p>
+
 
 <button id="button-start" class="button">Game</button>
 
@@ -103,8 +105,9 @@
     }
     if (status === "start_game") {
         console.log(gameData);
-        console.log("Start_Game");
-
+        console.log("Start_Game");  
+        const game = new Game(gameData['uniqueId'], gameData['players'], gameData['topCard'], gameData['topColor'],gameData['direction'])
+        game.start_init();
     }
   });
 
@@ -121,6 +124,30 @@
       socket.send(JSON.stringify(response));
 
     });
+  
+  }
+
+
+  var cards = [{"image":"Hello"}]
+  
+  class Game {
+      constructor(id, players, topCard, topColor, direction) {
+          this.id = id;
+          this.players = players;
+          this.topCard = topCard;
+          this,topColor = topColor;
+          this.direction = direction;
+      }
+
+      start_init(){
+          this.id_card = document.getElementById("card-container");
+          //this.id_card.innerHtml = this.topCard;
+          console.log(this.topCard['category']);
+          console.log(this.topCard['number']);
+          console.log(cards[0]["image"])
+          this.id_card.innerHTML = this.topCard['category'];
+          
+      }
 
   }
 
