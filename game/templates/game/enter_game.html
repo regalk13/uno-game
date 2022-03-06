@@ -128,7 +128,10 @@
   }
 
 
-  var cards = [{"image":"Hello"}]
+  var cards = [{"Y":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
+                "B":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
+                "R":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
+                "G":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"}}]
   
   class Game {
       constructor(id, players, topCard, topColor, direction) {
@@ -142,11 +145,9 @@
       start_init(){
           this.id_card = document.getElementById("card-container");
           //this.id_card.innerHtml = this.topCard;
-          console.log(this.topCard['category']);
-          console.log(this.topCard['number']);
-          console.log(cards[0]["image"])
-          this.id_card.innerHTML = this.topCard['category'];
-          
+          let category = this.topCard['category'];
+          let number = this.topCard['number'];
+          console.log(cards[0][category][number]);
       }
 
   }
