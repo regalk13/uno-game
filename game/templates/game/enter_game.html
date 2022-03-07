@@ -1,16 +1,11 @@
 {% extends 'main-game.html' %}
 
 {% block content %}
-
 <h2>Room</h2>
-
 <p id="app"></p>
-
 <p id="card-container"></p>
 
-
 <button id="button-start" class="button">Game</button>
-
 
 <script>
   let loc = window.location;
@@ -128,14 +123,22 @@
   }
 
   class Card {
-      constructor(color, category, wild){
-          var cards = [{"Y":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
-                "B":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
-                "R":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
-                "G":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"}}]
-
+      constructor(color, number, wild){
+          this.color = color;
+          this.number = number;
+          this.wild = wild;
       }
-    }
+      img_src(){
+              //var cards = [{"Y":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
+              //  "B":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
+              //  "R":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
+              //  "G":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"}}]
+
+              return "src/image";
+
+          }
+      }
+
   class Game {
       constructor(id, players, topCard, topColor, direction) {
           this.id = id;
@@ -150,9 +153,10 @@
           //this.id_card.innerHtml = this.topCard;
           let category = this.topCard['category'];
           let number = this.topCard['number'];
-          console.log(cards[0][category][number]);
+          let card = new Card(category, number, "wild");
+          console.log(card.img_src());
       }
-
+      
   }
 
 
