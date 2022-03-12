@@ -307,7 +307,6 @@ body{
     opacity: .8;
 }
 
-
 /* Animations and responsive stuff */
 
 @keyframes abouts {
@@ -326,5 +325,4 @@ body{
         padding: 20px;
         position: relative;
     }
-    
 }

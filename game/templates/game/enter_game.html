@@ -1,11 +1,27 @@
 {% extends 'main-game.html' %}
 
 {% block content %}
-<h2>Room</h2>
-<p id="app"></p>
-<p id="card-container"></p>
+<h2 class="title-room" style="text-align: center; font-size: 60px;">Room</h2>
+<button id="button-start" class="button btn btn-secondary btn-lg" style="position: absolute; left: 50%; transform: translateX(-50%);">Start Game</button>
+<div style="width: 360px; height: 1000px, marging-left: 20px;">
+<table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Players</th>
+    </tr>
+  </thead>
+  <tbody id="my_table">
+    <tr>
+      <td class="bg-primary">Regalk</td>
+    </tr>
+  </tbody>
+</table>
 
-<button id="button-start" class="button">Game</button>
+</div>
+<p id="app"></p>
+
+<div id="card-container" style="width: 165px; height: 255px;"></div>
+
 
 <script>
   let loc = window.location;
@@ -42,7 +58,7 @@
   });
 
 
-  app = document.getElementById('app');
+  app = document.getElementById('my_table');
 
   socket.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -51,15 +67,15 @@
     var array_players = JSON.parse(data['gameData'])['players'];
     console.log(admin);
     if (data['status'] == "user_new") {
-      while (app.firstChild) {
-        app.firstChild.remove()
+      while (app.firstChild){
+          app.firstChild.remove();
       }
 
       console.log(array_players)
       for (const player of array_players) {
-        div = document.createElement('p')
-        div.innerHTML = player;
-        app.append(div);
+          var row = app.insertRow(0);
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = player;
       }
 
     } else if (data['status'] == "user_left_room") {
@@ -67,9 +83,9 @@
         app.firstChild.remove()
       }
       for (const player of array_players) {
-        div = document.createElement('p')
-        div.innerHTML = player;
-        app.append(div);
+          var row = app.insertRow(0);
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = player;
       }
 
     }
@@ -129,13 +145,10 @@
           this.wild = wild;
       }
       img_src(){
-              //var cards = [{"Y":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
-              //  "B":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
-              //  "R":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"},
-              //  "G":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9"}}]
-
-              return "src/image";
-
+              //  TODO:
+              //  Make math function to get the exactly image ;)
+              return "url(/static/images/uno-cards.jpg)";
+          
           }
       }
 
@@ -154,12 +167,12 @@
           let category = this.topCard['category'];
           let number = this.topCard['number'];
           let card = new Card(category, number, "wild");
-          console.log(card.img_src());
+          let card_source = card.img_src();
+          //Init image 
+          document.getElementById("card-container").style.backgroundImage= card_source;
+          document.getElementById("button-start").style.display = 'none';
       }
-      
   }
-
-
 </script>
 
 {% endblock %}
